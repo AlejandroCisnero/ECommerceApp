@@ -1,6 +1,9 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
+import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,9 +53,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // @override
+  // void initState() {
+
+  //
+  // }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(colorScheme: lightColorScheme), home: const Home());
+      theme: ThemeData(colorScheme: lightColorScheme),
+      home:
+          ChangeNotifierProvider(create: (_) => Network(), child: const Home()),
+    );
   }
 }

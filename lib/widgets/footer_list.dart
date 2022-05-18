@@ -10,14 +10,33 @@ class FooterList extends StatefulWidget {
 class _FooterListState extends State<FooterList> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50),
-            )),
+    return Container(
+      width: double.infinity,
+      height: 350,
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(50),
+          )),
+      child: DefaultTabController(
+        length: 4,
+        child: Column(
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: TabBar(
+                indicatorColor: Colors.white,
+                isScrollable: true,
+                tabs: [
+                  Tab(text: 'Collections'),
+                  Tab(text: 'New'),
+                  Tab(text: 'Popular'),
+                  Tab(text: 'Best Selling')
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

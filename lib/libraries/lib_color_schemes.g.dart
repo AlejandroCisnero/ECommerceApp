@@ -4,7 +4,7 @@ const seed = Color(0xFF467C75);
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF006A60),
+  primary: Color(0xFF508480),
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFF73F7E8),
   onPrimaryContainer: Color(0xFF00201C),

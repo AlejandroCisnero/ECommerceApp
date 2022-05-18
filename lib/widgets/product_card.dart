@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard(this.productName, this.productPrice, this.productImageUrl,
@@ -21,11 +22,16 @@ class ProductCard extends StatelessWidget {
             width: 220,
             height: 300,
             child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(45)),
-                child: Image.network(
-                  productImageUrl,
-                  fit: BoxFit.cover,
-                )),
+              borderRadius: const BorderRadius.all(Radius.circular(45)),
+              child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: productImageUrl,
+                  fit: BoxFit.cover),
+              // child: Image.network(
+              //   productImageUrl,
+              //   fit: BoxFit.cover,
+              // ),
+            ),
           ),
           const SizedBox(
             height: 20,
