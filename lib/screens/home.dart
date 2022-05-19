@@ -100,7 +100,8 @@ class _HomeState extends State<Home> {
                                   return ProductCard(
                                       products[index].productName,
                                       products[index].productPrice,
-                                      products[index].productIamgeUrl);
+                                      products[index].productIamgeUrl,
+                                      products[index].productId);
                                 }),
                           ),
                           const SizedBox(

@@ -17,8 +17,8 @@ class CustomAppBar extends StatelessWidget {
             },
             child: SvgPicture.asset(
               'assets/icons/drawer_icon.svg',
-              width: 32,
-              height: 32,
+              width: 28,
+              height: 28,
             ),
           ),
           SizedBox(
@@ -32,16 +32,16 @@ class CustomAppBar extends StatelessWidget {
                   child: GestureDetector(
                     child: SvgPicture.asset(
                       'assets/icons/search_icon.svg',
-                      width: 38,
-                      height: 38,
+                      width: 34,
+                      height: 34,
                     ),
                   ),
                 ),
                 GestureDetector(
                   child: SvgPicture.asset(
                     'assets/icons/bag_icon.svg',
-                    width: 32,
-                    height: 32,
+                    width: 28,
+                    height: 28,
                   ),
                 ),
               ],

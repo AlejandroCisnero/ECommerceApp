@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/widgets/collections_carrousel.dart';
 import 'package:flutter/material.dart';
 
 class FooterList extends StatefulWidget {
@@ -12,7 +13,7 @@ class _FooterListState extends State<FooterList> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 350,
+      height: 270,
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
           borderRadius: const BorderRadius.only(
@@ -35,6 +36,13 @@ class _FooterListState extends State<FooterList> {
                 ],
               ),
             ),
+            Expanded(
+                child: TabBarView(children: [
+              CollectionsCarrousel(),
+              Icon(Icons.warning_outlined),
+              Icon(Icons.warning_outlined),
+              Icon(Icons.warning_outlined),
+            ], physics: NeverScrollableScrollPhysics()))
           ],
         ),
       ),
