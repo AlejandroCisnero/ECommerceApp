@@ -18,18 +18,21 @@ class ProductDetail extends StatelessWidget {
         MediaQuery.of(context).size.height - kBottomNavigationBarHeight;
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                ClipPath(
-                  child:
-                      Container(child: Image.network(product.productIamgeUrl)),
+        body: Container(
+          height: height,
+          child: Stack(
+            children: [
+              Positioned(
+                child: ClipPath(
+                  // child: Image.network(product.productIamgeUrl),
+                  child: Container(
+                    color: Colors.blueAccent,
+                  ),
                   clipper: ProductDetailClipper(),
                 ),
-              ],
-            )
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
