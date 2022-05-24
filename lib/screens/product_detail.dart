@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/clippers/product_detail_clipper.dart';
 import 'package:e_commerce_app/providers/products.dart';
+import 'package:e_commerce_app/widgets/description_card.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../models/product.dart';
 
@@ -34,7 +36,7 @@ class ProductDetail extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: (height / 2),
+                top: (height / 2) - 40,
                 child: Container(
                   padding: const EdgeInsets.only(left: 20),
                   width: width,
@@ -56,10 +58,46 @@ class ProductDetail extends StatelessWidget {
                         children: [
                           Text(
                             'Designer: ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                            style: Theme.of(context).textTheme.headlineMedium,
                           ),
-                          Text('Yo mismo')
+                          Text('Yo mismo',
+                              style: Theme.of(context).textTheme.bodyMedium)
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Text('Materials: ',
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium),
+                          Text('Materiales pues',
+                              style: Theme.of(context).textTheme.bodyMedium)
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        '€${product.productPrice}',
+                        style: GoogleFonts.mulish(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 22,
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          DescriptionCard(),
+                          DescriptionCard(),
+                          DescriptionCard(),
+                          DescriptionCard()
                         ],
                       )
                     ],

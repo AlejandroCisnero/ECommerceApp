@@ -5,6 +5,7 @@ import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/screens/product_detail.dart';
 import 'package:e_commerce_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -58,7 +59,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(colorScheme: lightColorScheme),
+      theme: ThemeData(
+        colorScheme: lightColorScheme,
+        textTheme: TextTheme(
+          headlineMedium: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: lightColorScheme.onBackground),
+          bodyMedium: GoogleFonts.mulish(
+            textStyle:
+                TextStyle(fontSize: 16, color: lightColorScheme.onBackground),
+          ),
+        ),
+      ),
       home:
           ChangeNotifierProvider(create: (_) => Network(), child: const Home()),
       routes: {ProductDetail.route: (context) => const ProductDetail()},
