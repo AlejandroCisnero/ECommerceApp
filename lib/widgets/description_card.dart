@@ -7,21 +7,28 @@ class DescriptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 64,
-      width: 64,
+      padding: const EdgeInsets.symmetric(vertical: 13),
+      height: 70,
+      width: 70,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.all(
-          Radius.circular(25),
+          Radius.circular(15),
         ),
       ),
-      child: Center(
-        child: Column(
-          children: [
-            SvgPicture.asset('assets/icons/bag_icon.svg'),
-            Text('12 cm')
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SvgPicture.asset(
+            'assets/icons/bag_icon.svg',
+            width: 16,
+            height: 16,
+          ),
+          Text(
+            '12 cm',
+            style: TextStyle(color: Colors.black),
+          )
+        ],
       ),
     );
   }

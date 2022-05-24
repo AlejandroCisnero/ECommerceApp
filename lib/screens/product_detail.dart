@@ -2,6 +2,7 @@ import 'package:e_commerce_app/clippers/product_detail_clipper.dart';
 import 'package:e_commerce_app/providers/products.dart';
 import 'package:e_commerce_app/widgets/description_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../models/product.dart';
@@ -22,11 +23,13 @@ class ProductDetail extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
+          height: height + kBottomNavigationBarHeight,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
               Positioned(child: Image.network(product.productIamgeUrl)),
               Container(
+                height: height + kBottomNavigationBarHeight,
                 margin: EdgeInsets.only(top: (height / 2) - 130),
                 child: ClipPath(
                   child: Container(
@@ -37,61 +40,76 @@ class ProductDetail extends StatelessWidget {
               ),
               Positioned(
                 top: (height / 2) - 40,
-                child: Container(
-                  padding: const EdgeInsets.only(left: 20),
-                  width: width,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product.productName,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 26,
-                            color: Theme.of(context).colorScheme.onBackground),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
+                height: height / 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 20),
+                      width: width,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Designer: ',
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            product.productName,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 26,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
                           ),
-                          Text('Yo mismo',
-                              style: Theme.of(context).textTheme.bodyMedium)
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Designer: ',
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
+                              Text('Yo mismo',
+                                  style: Theme.of(context).textTheme.bodyMedium)
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text('Materials: ',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium),
+                              Text('Materiales pues',
+                                  style: Theme.of(context).textTheme.bodyMedium)
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            '€${product.productPrice}',
+                            style: GoogleFonts.mulish(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 22,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Text('Materials: ',
-                              style:
-                                  Theme.of(context).textTheme.headlineMedium),
-                          Text('Materiales pues',
-                              style: Theme.of(context).textTheme.bodyMedium)
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        '€${product.productPrice}',
-                        style: GoogleFonts.mulish(
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 22,
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      width: width,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           DescriptionCard(),
@@ -99,9 +117,24 @@ class ProductDetail extends StatelessWidget {
                           DescriptionCard(),
                           DescriptionCard()
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: width,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/bag_icon.svg',
+                              width: 32,
+                              height: 32,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               )
             ],
