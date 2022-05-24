@@ -16,21 +16,56 @@ class ProductDetail extends StatelessWidget {
         products.firstWhere((element) => element.productId == id);
     double height =
         MediaQuery.of(context).size.height - kBottomNavigationBarHeight;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Container(
-          height: height,
           child: Stack(
+            alignment: Alignment.topCenter,
             children: [
-              Positioned(
+              Positioned(child: Image.network(product.productIamgeUrl)),
+              Container(
+                margin: EdgeInsets.only(top: (height / 2) - 130),
                 child: ClipPath(
-                  // child: Image.network(product.productIamgeUrl),
                   child: Container(
-                    color: Colors.blueAccent,
+                    color: Colors.white,
                   ),
                   clipper: ProductDetailClipper(),
                 ),
               ),
+              Positioned(
+                top: (height / 2),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 20),
+                  width: width,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.productName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 26,
+                            color: Theme.of(context).colorScheme.onBackground),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Designer: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          Text('Yo mismo')
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

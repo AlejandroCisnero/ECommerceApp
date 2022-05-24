@@ -4,64 +4,72 @@ class ProductDetailClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    final double _xScaling = size.width / 400;
-    final double _yScaling = size.height / 600;
-    path.lineTo(-1.89778 * _xScaling, 229 * _yScaling);
+    final double _xScaling = size.width / 1080;
+    final double _yScaling = size.height / 1170;
+    path.lineTo(0 * _xScaling, 0 * _yScaling);
     path.cubicTo(
-      1.3321800000000001 * _xScaling,
-      241 * _yScaling,
-      -1.89778 * _xScaling,
-      283 * _yScaling,
-      105.76742 * _xScaling,
-      286 * _yScaling,
+      0 * _xScaling,
+      0 * _yScaling,
+      7.34 * _xScaling,
+      155.78 * _yScaling,
+      265.49 * _xScaling,
+      155.78 * _yScaling,
     );
     path.cubicTo(
-      213.43262 * _xScaling,
-      289 * _yScaling,
-      314.6379 * _xScaling,
-      287 * _yScaling,
-      314.6379 * _xScaling,
-      287 * _yScaling,
+      523.64 * _xScaling,
+      155.78 * _yScaling,
+      876.61 * _xScaling,
+      155.78 * _yScaling,
+      876.61 * _xScaling,
+      155.78 * _yScaling,
     );
     path.cubicTo(
-      314.6379 * _xScaling,
-      287 * _yScaling,
-      400.77006 * _xScaling,
-      279 * _yScaling,
-      401.84671000000003 * _xScaling,
-      352 * _yScaling,
+      886.84 * _xScaling,
+      155.04 * _yScaling,
+      974.71 * _xScaling,
+      149.99 * _yScaling,
+      1034.66 * _xScaling,
+      209.76 * _yScaling,
     );
     path.cubicTo(
-      402.92336 * _xScaling,
-      425 * _yScaling,
-      404.00001000000003 * _xScaling,
-      599 * _yScaling,
-      404.00001000000003 * _xScaling,
-      599 * _yScaling,
+      1075.94 * _xScaling,
+      250.92 * _yScaling,
+      1079.5400000000002 * _xScaling,
+      298.45 * _yScaling,
+      1080 * _xScaling,
+      313.1 * _yScaling,
     );
     path.cubicTo(
-      404.00001000000003 * _xScaling,
-      599 * _yScaling,
-      -1.8977799999999547 * _xScaling,
-      599 * _yScaling,
-      -1.8977799999999547 * _xScaling,
-      599 * _yScaling,
+      1080 * _xScaling,
+      598.73 * _yScaling,
+      1080 * _xScaling,
+      884.37 * _yScaling,
+      1080 * _xScaling,
+      1170 * _yScaling,
     );
     path.cubicTo(
-      -1.8977799999999547 * _xScaling,
-      599 * _yScaling,
-      -5.127739999999955 * _xScaling,
-      217 * _yScaling,
-      -1.8977799999999547 * _xScaling,
-      229 * _yScaling,
+      1080 * _xScaling,
+      1170 * _yScaling,
+      0 * _xScaling,
+      1170 * _yScaling,
+      0 * _xScaling,
+      1170 * _yScaling,
     );
     path.cubicTo(
-      -1.8977799999999547 * _xScaling,
-      229 * _yScaling,
-      -1.89778 * _xScaling,
-      229 * _yScaling,
-      -1.89778 * _xScaling,
-      229 * _yScaling,
+      0 * _xScaling,
+      1170 * _yScaling,
+      0 * _xScaling,
+      0 * _yScaling,
+      0 * _xScaling,
+      0 * _yScaling,
+    );
+    path.cubicTo(
+      0 * _xScaling,
+      0 * _yScaling,
+      0 * _xScaling,
+      0 * _yScaling,
+      0 * _xScaling,
+      0 * _yScaling,
     );
     return path;
   }
