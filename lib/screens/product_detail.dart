@@ -39,8 +39,8 @@ class ProductDetail extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: (height / 2) - 40,
-                height: height / 2,
+                top: (height / 2),
+                height: (height / 2) + 40,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,19 +119,33 @@ class ProductDetail extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        width: width,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            SvgPicture.asset(
+                    Expanded(child: Container()),
+                    SizedBox(
+                      width: width,
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(
+                                left: 50, top: 10, bottom: 25, right: 60),
+                            child: SvgPicture.asset(
                               'assets/icons/bag_icon.svg',
                               width: 32,
                               height: 32,
                             ),
-                          ],
-                        ),
+                          ),
+                          // const SizedBox(
+                          //   width: 100,
+                          // ),
+                          Expanded(
+                            child: Container(
+                              height: 70,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(40)),
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          )
+                        ],
                       ),
                     )
                   ],
