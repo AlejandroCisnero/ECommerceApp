@@ -11,8 +11,8 @@ class CollectionsCarrousel extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: products.length,
       itemBuilder: ((context, index) {
-        return SmallProductCard(
-            products[index].productName, products[index].productIamgeUrl);
+        return SmallProductCard(products[index].productName,
+            products[index].productIamgeUrl, products[index].productId);
       }),
     );
   }

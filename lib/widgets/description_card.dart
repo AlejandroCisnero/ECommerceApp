@@ -1,9 +1,10 @@
+import 'package:e_commerce_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DescriptionCard extends StatelessWidget {
-  const DescriptionCard({Key? key}) : super(key: key);
-
+  const DescriptionCard(this.productFeature, {Key? key}) : super(key: key);
+  final int productFeature;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +26,7 @@ class DescriptionCard extends StatelessWidget {
             height: 16,
           ),
           Text(
-            '12 cm',
+            productFeature.toString(),
             style: TextStyle(color: Colors.black),
           )
         ],

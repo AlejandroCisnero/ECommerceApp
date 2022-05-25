@@ -62,6 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
       theme: ThemeData(
         colorScheme: lightColorScheme,
         textTheme: TextTheme(
+          headlineLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: lightColorScheme.onBackground),
           headlineMedium: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
