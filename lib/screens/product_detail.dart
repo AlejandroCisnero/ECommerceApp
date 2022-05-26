@@ -19,27 +19,28 @@ class ProductDetail extends StatelessWidget {
     final id = ModalRoute.of(context)?.settings.arguments as String;
     final Product product =
         products.firstWhere((element) => element.productId == id);
-    double height =
-        MediaQuery.of(context).size.height - kBottomNavigationBarHeight;
+    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-          height: height + kBottomNavigationBarHeight,
+          width: width,
+          height: height,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              Positioned(child: Image.network(product.productIamgeUrl)),
+              Image.network(product.productIamgeUrl),
               Positioned(
-                height: height + kBottomNavigationBarHeight,
-                top: (height / 2) - 130,
+                top: (height / 2) - (height * 0.18),
                 child: ClipPath(
                   child: Container(
-                    padding: const EdgeInsets.only(top: 120),
+                    padding: const EdgeInsets.only(top: 100),
                     color: Colors.white,
-                    height: height / 2,
+                    width: width,
+                    height: 430,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
@@ -124,9 +125,9 @@ class ProductDetail extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          width: width,
+                        Expanded(
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
                                 padding: const EdgeInsets.only(

@@ -53,65 +53,69 @@ class _HomeState extends State<Home> {
           drawer: const Drawer(),
           backgroundColor: Colors.white,
           body: context.watch<Network>().isConnected
-              ? Column(
-                  children: [
-                    const CustomAppBar(),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding:
-                                    const EdgeInsets.only(left: 20, top: 15),
-                                child: Text(
-                                  'Trending',
-                                  style: GoogleFonts.mulish(
-                                    textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 25),
+              ? Container(
+                  height: MediaQuery.of(context).size.height +
+                      kBottomNavigationBarHeight,
+                  child: Column(
+                    children: [
+                      const CustomAppBar(),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding:
+                                      const EdgeInsets.only(left: 20, top: 15),
+                                  child: Text(
+                                    'Trending',
+                                    style: GoogleFonts.mulish(
+                                      textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 25),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                padding:
-                                    const EdgeInsets.only(right: 20, top: 25),
-                                child: Text(
-                                  'See All',
-                                  style: GoogleFonts.mulish(
-                                    textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18),
+                                Container(
+                                  padding:
+                                      const EdgeInsets.only(right: 20, top: 25),
+                                  child: Text(
+                                    'See All',
+                                    style: GoogleFonts.mulish(
+                                      textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 400,
-                            padding: const EdgeInsets.only(top: 20),
-                            child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: products.length,
-                                itemBuilder: (context, index) {
-                                  return ProductCard(
-                                      products[index].productName,
-                                      products[index].productPrice,
-                                      products[index].productIamgeUrl,
-                                      products[index].productId);
-                                }),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const FooterList()
-                        ],
+                              ],
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 400,
+                              padding: const EdgeInsets.only(top: 20),
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: products.length,
+                                  itemBuilder: (context, index) {
+                                    return ProductCard(
+                                        products[index].productName,
+                                        products[index].productPrice,
+                                        products[index].productIamgeUrl,
+                                        products[index].productId);
+                                  }),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const FooterList()
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )
               : const NoInternet()),
     );
