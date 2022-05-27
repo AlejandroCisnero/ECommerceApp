@@ -30,14 +30,14 @@ class ProductDetail extends StatelessWidget {
             alignment: Alignment.topCenter,
             children: [
               Image.network(product.productIamgeUrl),
-              Positioned(
+              Positioned.fill(
                 top: (height / 2) - (height * 0.18),
                 child: ClipPath(
                   child: Container(
                     padding: const EdgeInsets.only(top: 100),
                     color: Colors.white,
                     width: width,
-                    height: 430,
+                    height: height * 0.62,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
