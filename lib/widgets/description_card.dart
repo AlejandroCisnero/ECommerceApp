@@ -2,9 +2,13 @@ import 'package:e_commerce_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+enum descriptionType { height, width, diagonal, potency }
+
 class DescriptionCard extends StatelessWidget {
-  const DescriptionCard(this.productFeature, {Key? key}) : super(key: key);
+  const DescriptionCard(this.productFeature, this.description, {Key? key})
+      : super(key: key);
   final int productFeature;
+  final descriptionType description;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,14 +24,33 @@ class DescriptionCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SvgPicture.asset(
-            'assets/icons/bag_icon.svg',
-            width: 16,
-            height: 16,
-          ),
+          if (description == descriptionType.height)
+            SvgPicture.asset(
+              'assets/icons/ruler-vertical.svg',
+              width: 16,
+              height: 16,
+            ),
+          if (description == descriptionType.width)
+            SvgPicture.asset(
+              'assets/icons/ruler-horizontal.svg',
+              width: 16,
+              height: 16,
+            ),
+          if (description == descriptionType.diagonal)
+            SvgPicture.asset(
+              'assets/icons/ruler-solid.svg',
+              width: 16,
+              height: 16,
+            ),
+          if (description == descriptionType.potency)
+            SvgPicture.asset(
+              'assets/icons/bolt-solid.svg',
+              width: 16,
+              height: 16,
+            ),
           Text(
-            productFeature.toString(),
-            style: TextStyle(color: Colors.black),
+            '$productFeature ${description == descriptionType.potency ? 'W' : 'cm'}',
+            style: const TextStyle(color: Colors.black),
           )
         ],
       ),

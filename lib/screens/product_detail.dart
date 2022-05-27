@@ -112,16 +112,22 @@ class ProductDetail extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           width: width,
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              DescriptionCard(product.features.height),
-                              DescriptionCard(product.features.width),
-                              DescriptionCard(product.features.diagonal),
-                              DescriptionCard(product.features.potency)
+                              DescriptionCard(product.features.height,
+                                  descriptionType.height),
+                              DescriptionCard(product.features.width,
+                                  descriptionType.width),
+                              DescriptionCard(product.features.diagonal,
+                                  descriptionType.diagonal),
+                              DescriptionCard(
+                                product.features.potency,
+                                descriptionType.potency,
+                              )
                             ],
                           ),
                         ),

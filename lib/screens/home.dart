@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/no_internet.dart';
 import 'package:e_commerce_app/widgets/custom_app_bar.dart';
+import 'package:e_commerce_app/widgets/custom_drawer.dart';
 import 'package:e_commerce_app/widgets/footer_list.dart';
 import 'package:e_commerce_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          drawer: const Drawer(),
+          drawer: const CustomDrawer(),
           backgroundColor: Colors.white,
           body: context.watch<Network>().isConnected
               ? Container(
@@ -71,11 +72,15 @@ class _HomeState extends State<Home> {
                                       const EdgeInsets.only(left: 20, top: 15),
                                   child: Text(
                                     'Trending',
-                                    style: GoogleFonts.mulish(
-                                      textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 25),
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineLarge!
+                                        .merge(const TextStyle(
+                                            color: Colors.black)),
+                                    // style: GoogleFonts.mulish(
+                                    //   textStyle: const TextStyle(
+                                    //       fontWeight: FontWeight.w900,
+                                    //       fontSize: 25),
                                   ),
                                 ),
                                 Container(
