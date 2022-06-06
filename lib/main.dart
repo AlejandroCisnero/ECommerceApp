@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
 import 'package:e_commerce_app/providers/network.dart';
+import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/screens/product_detail.dart';
 import 'package:e_commerce_app/widgets/product_card.dart';
@@ -78,7 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       home:
           ChangeNotifierProvider(create: (_) => Network(), child: const Home()),
-      routes: {ProductDetail.route: (context) => const ProductDetail()},
+      routes: {
+        ProductDetail.route: (context) => const ProductDetail(),
+        CartScreen.route: (context) => const CartScreen()
+      },
     );
   }
 }

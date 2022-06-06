@@ -59,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.home),
+                    const Icon(Icons.home),
                     Text('Home', style: Theme.of(context).textTheme.bodyMedium)
                   ],
                 ),

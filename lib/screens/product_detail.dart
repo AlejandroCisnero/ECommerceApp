@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:e_commerce_app/clippers/product_detail_clipper.dart';
 import 'package:e_commerce_app/providers/products.dart';
+import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/widgets/description_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +30,9 @@ class ProductDetail extends StatelessWidget {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              Image.network(product.productIamgeUrl),
+              Hero(
+                  tag: product.productId,
+                  child: Image.network(product.productIamgeUrl)),
               Positioned.fill(
                 top: (height / 2) - (height * 0.18),
                 child: ClipPath(
@@ -135,14 +138,46 @@ class ProductDetail extends StatelessWidget {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 50, top: 10, bottom: 25, right: 60),
-                                child: SvgPicture.asset(
-                                  'assets/icons/bag_icon.svg',
-                                  width: 32,
-                                  height: 32,
-                                  color: Theme.of(context).colorScheme.primary,
+                              InkWell(
+                                onTap: () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      dismissDirection:
+                                          DismissDirection.startToEnd,
+                                      action: SnackBarAction(
+                                          textColor: Colors.white,
+                                          label: 'Go to cart',
+                                          onPressed: () {
+                                            Navigator.pushNamed(
+                                                context, CartScreen.route);
+                                          }),
+                                      padding: const EdgeInsets.all(0),
+                                      content: Container(
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary),
+                                        child: const Center(
+                                          child: Text(
+                                            'Product Added!',
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 50, top: 10, bottom: 25, right: 60),
+                                  child: SvgPicture.asset(
+                                    'assets/icons/bag_icon.svg',
+                                    width: 32,
+                                    height: 32,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                                 ),
                               ),
                               Expanded(
