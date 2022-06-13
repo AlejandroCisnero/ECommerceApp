@@ -1,10 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
+import 'package:e_commerce_app/providers/cart.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/screens/product_detail.dart';
-import 'package:e_commerce_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,18 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -59,30 +47,35 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: lightColorScheme,
-        textTheme: TextTheme(
-          headlineLarge: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: lightColorScheme.onBackground),
-          headlineMedium: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: lightColorScheme.onBackground),
-          bodyMedium: GoogleFonts.mulish(
-            textStyle:
-                TextStyle(fontSize: 16, color: lightColorScheme.onBackground),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Network()),
+        ChangeNotifierProvider(create: (_) => Cart()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          colorScheme: darkColorScheme,
+          textTheme: TextTheme(
+            headlineLarge: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: darkColorScheme.onBackground),
+            headlineMedium: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: darkColorScheme.onBackground),
+            bodyMedium: GoogleFonts.mulish(
+              textStyle:
+                  TextStyle(fontSize: 16, color: darkColorScheme.onBackground),
+            ),
           ),
         ),
+        home: const Home(),
+        routes: {
+          ProductDetail.route: (context) => const ProductDetail(),
+          CartScreen.route: (context) => const CartScreen()
+        },
       ),
-      home:
-          ChangeNotifierProvider(create: (_) => Network(), child: const Home()),
-      routes: {
-        ProductDetail.route: (context) => const ProductDetail(),
-        CartScreen.route: (context) => const CartScreen()
-      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import '../models/feature.dart';
 import '../models/product.dart';
 
 List<Product> products = [

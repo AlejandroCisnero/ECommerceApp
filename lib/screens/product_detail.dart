@@ -1,12 +1,15 @@
 import 'dart:developer';
 
 import 'package:e_commerce_app/clippers/product_detail_clipper.dart';
+import 'package:e_commerce_app/models/cart_item.dart';
+import 'package:e_commerce_app/providers/cart.dart';
 import 'package:e_commerce_app/providers/products.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/widgets/description_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../models/product.dart';
 
@@ -38,8 +41,8 @@ class ProductDetail extends StatelessWidget {
                 child: ClipPath(
                   child: Container(
                     padding: const EdgeInsets.only(top: 100),
-                    color: Colors.white,
                     width: width,
+                    color: Theme.of(context).colorScheme.background,
                     height: height * 0.62,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -140,6 +143,11 @@ class ProductDetail extends StatelessWidget {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  Provider.of<Cart>(context, listen: false)
+                                      .addItem(CartItem(
+                                          DateTime.now().toString(),
+                                          product,
+                                          1));
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       dismissDirection:

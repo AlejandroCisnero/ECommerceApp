@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,6 +20,7 @@ class CustomAppBar extends StatelessWidget {
               'assets/icons/drawer_icon.svg',
               width: 28,
               height: 28,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
           SizedBox(
@@ -34,14 +36,19 @@ class CustomAppBar extends StatelessWidget {
                       'assets/icons/search_icon.svg',
                       width: 34,
                       height: 34,
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(CartScreen.route);
+                  },
                   child: SvgPicture.asset(
                     'assets/icons/bag_icon.svg',
                     width: 28,
                     height: 28,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
               ],

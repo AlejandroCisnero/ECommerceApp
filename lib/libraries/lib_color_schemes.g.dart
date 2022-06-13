@@ -5,7 +5,7 @@ const seed = Color(0xFF467C75);
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xFF508480),
-  onPrimary: Color(0xFFFFFFFF),
+  onPrimary: Color(0xFF000000),
   primaryContainer: Color(0xFF73F7E8),
   onPrimaryContainer: Color(0xFF00201C),
   secondary: Color(0xFF4A635F),
@@ -35,8 +35,8 @@ const lightColorScheme = ColorScheme(
 
 const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
-  primary: Color(0xFF51DBCC),
-  onPrimary: Color(0xFF003731),
+  primary: Color(0xFF508480),
+  onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFF005048),
   onPrimaryContainer: Color(0xFF73F7E8),
   secondary: Color(0xFFB1CCC7),
@@ -54,7 +54,7 @@ const darkColorScheme = ColorScheme(
   background: Color(0xFF191C1C),
   onBackground: Color(0xFFE0E3E1),
   surface: Color(0xFF191C1C),
-  onSurface: Color(0xFFE0E3E1),
+  onSurface: Color(0xFF000000),
   surfaceVariant: Color(0xFF3F4947),
   onSurfaceVariant: Color(0xFFBEC9C6),
   outline: Color(0xFF899391),

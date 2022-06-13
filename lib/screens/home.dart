@@ -51,8 +51,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           drawer: const CustomDrawer(),
-          backgroundColor: Colors.white,
           body: context.watch<Network>().isConnected
               ? Container(
                   height: MediaQuery.of(context).size.height +
@@ -70,18 +70,10 @@ class _HomeState extends State<Home> {
                                 Container(
                                   padding:
                                       const EdgeInsets.only(left: 20, top: 15),
-                                  child: Text(
-                                    'Trending',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge!
-                                        .merge(const TextStyle(
-                                            color: Colors.black)),
-                                    // style: GoogleFonts.mulish(
-                                    //   textStyle: const TextStyle(
-                                    //       fontWeight: FontWeight.w900,
-                                    //       fontSize: 25),
-                                  ),
+                                  child: Text('Trending',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineLarge),
                                 ),
                                 Container(
                                   padding:

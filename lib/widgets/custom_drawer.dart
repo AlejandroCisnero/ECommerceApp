@@ -60,28 +60,52 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Icon(Icons.home),
-                    Text('Home', style: Theme.of(context).textTheme.bodyMedium)
+                    Text(
+                      'Home',
+                      style: Theme.of(context).textTheme.bodyMedium!.merge(
+                            TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                    )
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.home),
-                    Text('Home', style: Theme.of(context).textTheme.bodyMedium)
+                    Text(
+                      'Home',
+                      style: Theme.of(context).textTheme.bodyMedium!.merge(
+                            TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                    )
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.home),
-                    Text('Home', style: Theme.of(context).textTheme.bodyMedium)
+                    Text(
+                      'Home',
+                      style: Theme.of(context).textTheme.bodyMedium!.merge(
+                            TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                    )
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.home),
-                    Text('Home', style: Theme.of(context).textTheme.bodyMedium)
+                    Text(
+                      'Home',
+                      style: Theme.of(context).textTheme.bodyMedium!.merge(
+                            TextStyle(
+                                color: Theme.of(context).colorScheme.onSurface),
+                          ),
+                    )
                   ],
                 )
               ],
