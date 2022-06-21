@@ -9,7 +9,8 @@ List<Product> products = [
       'p1',
       Features(10, 60, 75, 10),
       'Jeniffer Doe',
-      'Plastic'),
+      'Plastic',
+      false),
   Product(
       'Lamparas colgantes',
       400,
@@ -17,7 +18,8 @@ List<Product> products = [
       'p2',
       Features(20, 100, 110, 15),
       'Manuel Alejandro Davila',
-      'Plastic, Rope'),
+      'Plastic, Rope',
+      false),
   Product(
       'Night Lamp',
       120,
@@ -25,7 +27,8 @@ List<Product> products = [
       'p3',
       Features(5, 45, 47, 5),
       'Anielka Smith',
-      'Plastic, Crystal'),
+      'Plastic, Crystal',
+      false),
   Product(
       'Asian Lamp',
       250,
@@ -33,7 +36,8 @@ List<Product> products = [
       'p4',
       Features(40, 40, 40, 5),
       'Fang Yu',
-      'Paper, Rope, Plastic'),
+      'Paper, Rope, Plastic',
+      false),
   Product(
       'Snake styled',
       80,
@@ -41,7 +45,8 @@ List<Product> products = [
       'p5',
       Features(5, 45, 47, 10),
       'Hideo Kojima',
-      'Wood, Metal, Plastic'),
+      'Wood, Metal, Plastic',
+      false),
   Product(
       'Moon',
       250,
@@ -49,7 +54,8 @@ List<Product> products = [
       'p6',
       Features(30, 30, 30, 20),
       'Jhon Doe',
-      'Plastic, Wood'),
+      'Plastic, Wood',
+      false),
   Product(
       'Lava Lamp',
       80,
@@ -57,5 +63,6 @@ List<Product> products = [
       'p7',
       Features(15, 45, 50, 15),
       'Manuel Alejandro Davila',
-      'Plastic, Metal, Lava')
+      'Plastic, Metal, Lava',
+      false)
 ];

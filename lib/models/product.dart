@@ -1,14 +1,28 @@
+import 'package:flutter/material.dart';
+
 import 'feature.dart';
 
-class Product {
-  Product(this.productName, this.productPrice, this.productIamgeUrl,
-      this.productId, this.features, this.designer, this.materials);
+class Product with ChangeNotifier {
+  String productId;
+  String productName;
+  String productIamgeUrl;
+  int productPrice;
+  Features features;
+  String designer;
+  String materials;
+  bool isFavorite;
+  Product(
+      this.productName,
+      this.productPrice,
+      this.productIamgeUrl,
+      this.productId,
+      this.features,
+      this.designer,
+      this.materials,
+      this.isFavorite);
 
-  final String productId;
-  final String productName;
-  final String productIamgeUrl;
-  final int productPrice;
-  final Features features;
-  final String designer;
-  final String materials;
+  void toggleFavorite() {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 }

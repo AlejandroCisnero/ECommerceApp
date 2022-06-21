@@ -1,28 +1,32 @@
 import 'package:e_commerce_app/screens/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import '../models/product.dart';
+
 class ProductCard extends StatelessWidget {
-  const ProductCard(
-      this.productName, this.productPrice, this.productImageUrl, this.productId,
+  const ProductCard(this.product,
+      // this.productName, this.productPrice, this.productImageUrl, this.productId,
       {Key? key})
       : super(key: key);
-  final String productImageUrl;
-  final String productName;
-  final int productPrice;
-  final String productId;
+  // final String productImageUrl;
+  // final String productName;
+  // final int productPrice;
+  // final String productId;
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(ProductDetail.route, arguments: productId);
+            .pushNamed(ProductDetail.route, arguments: product);
       },
       child: Container(
         margin: const EdgeInsets.only(left: 15),
         child: Hero(
-          tag: productId,
+          tag: product.productId,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -35,7 +39,7 @@ class ProductCard extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(45)),
                   child: FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
-                      image: productImageUrl,
+                      image: product.productIamgeUrl,
                       fit: BoxFit.cover),
                 ),
               ),
@@ -43,7 +47,7 @@ class ProductCard extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                productName,
+                product.productName,
                 style: GoogleFonts.mulish(
                   textStyle: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -56,7 +60,7 @@ class ProductCard extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  '€$productPrice',
+                  '€${product.productPrice}',
                   style: GoogleFonts.mulish(
                     textStyle: TextStyle(
                         fontWeight: FontWeight.w800,

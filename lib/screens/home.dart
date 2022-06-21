@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../models/feature.dart';
+import '../models/product.dart';
 import '../providers/products.dart';
 
 class Home extends StatefulWidget {
@@ -54,7 +56,7 @@ class _HomeState extends State<Home> {
           backgroundColor: Theme.of(context).colorScheme.background,
           drawer: const CustomDrawer(),
           body: context.watch<Network>().isConnected
-              ? Container(
+              ? SizedBox(
                   height: MediaQuery.of(context).size.height +
                       kBottomNavigationBarHeight,
                   child: Column(
@@ -97,11 +99,7 @@ class _HomeState extends State<Home> {
                                   scrollDirection: Axis.horizontal,
                                   itemCount: products.length,
                                   itemBuilder: (context, index) {
-                                    return ProductCard(
-                                        products[index].productName,
-                                        products[index].productPrice,
-                                        products[index].productIamgeUrl,
-                                        products[index].productId);
+                                    return ProductCard(products[index]);
                                   }),
                             ),
                             const SizedBox(

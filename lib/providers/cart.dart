@@ -1,23 +1,8 @@
 import 'package:e_commerce_app/models/cart_item.dart';
-import 'package:e_commerce_app/models/product.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../models/feature.dart';
-
 class Cart with ChangeNotifier {
-  final List<CartItem> _cartItems = [
-    CartItem(
-        'ci1',
-        Product(
-            'Lampara triple',
-            300,
-            'https://img1.homary.com/filters:format(webp)/mall/file/2021/08/17/d7e4423574e9406e80d4be4a8dde748f.jpg',
-            'p1',
-            Features(10, 60, 75, 10),
-            'Jeniffer Doe',
-            'Plastic'),
-        2)
-  ];
+  final List<CartItem> _cartItems = [];
 
   double _total = 0.00;
 
