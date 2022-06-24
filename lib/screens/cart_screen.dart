@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/models/cart_item.dart';
+import 'package:e_commerce_app/routes/checkout.dart';
 import 'package:e_commerce_app/widgets/cart_item.dart' as wci;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +69,9 @@ class _CartScreenState extends State<CartScreen> {
                     style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(
                             Size(screenSize.width - 20, 40))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(routeCheckoutStart);
+                    },
                     child: const Text(
                       'Buy',
                       style: TextStyle(fontSize: 16),

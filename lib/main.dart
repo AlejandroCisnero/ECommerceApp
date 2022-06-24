@@ -64,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-        home: const Home(),
         onGenerateRoute: (settings) {
           late Widget page;
           if (settings.name == routeHome) {

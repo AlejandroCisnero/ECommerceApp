@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/routes/checkout.dart';
+import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:flutter/material.dart';
 
 class SetupFlow extends StatefulWidget {
@@ -11,9 +12,38 @@ class SetupFlow extends StatefulWidget {
 }
 
 class _SetupFlowState extends State<SetupFlow> {
+  String title = 'Titulo';
+
+  void _onCheckOut() {
+    _navigatorKey.currentState!.pushNamed(routeCheckoutStart);
+  }
+
+  void _onChekoutShipping(String deviceId) {
+    _navigatorKey.currentState!.pushNamed(routeCheckoutAddress);
+  }
+
+  void _onCheckoutPayment() {
+    _navigatorKey.currentState!.pushNamed(routeCheckoutPayment);
+  }
+
+  void _onCheckoutOrder() {
+    _navigatorKey.currentState!.pushNamed(routeCheckoutOrder);
+  }
+
   PreferredSizeWidget _buildFlowAppBar() {
     return AppBar(
-      title: const Text('Bulb Setup'),
+      title: Text(
+        title,
+        style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+      ),
+      centerTitle: true,
+      leading: Icon(
+        Icons.arrow_back_ios,
+        color: Theme.of(context).colorScheme.onBackground,
+      ),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
     );
   }
 
@@ -37,6 +67,7 @@ class _SetupFlowState extends State<SetupFlow> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(true);
+                      _exitSetup();
                     },
                     child: const Text('Leave'),
                   ),
@@ -58,28 +89,17 @@ class _SetupFlowState extends State<SetupFlow> {
 
   final _navigatorKey = GlobalKey<NavigatorState>();
 
-  void _onCheckOut() {
-    _navigatorKey.currentState!.pushNamed(routeCheckoutStart);
-  }
-
-  void _onChekoutAddress(String deviceId) {
-    _navigatorKey.currentState!.pushNamed(routeCheckoutAddress);
-  }
-
-  void _onCheckoutPayment() {
-    _navigatorKey.currentState!.pushNamed(routeCheckoutPayment);
-  }
-
-  void _onCheckoutOrder() {
-    _navigatorKey.currentState!.pushNamed(routeCheckoutOrder);
-  }
-
   @override
   Widget build(BuildContext context) {
+    void _changeAppBarTitle(String newTitle) {
+      setState(() {
+        title = newTitle;
+      });
+    }
+
     return WillPopScope(
       onWillPop: _isExitDesired,
       child: Scaffold(
-        appBar: _buildFlowAppBar(),
         body: Navigator(
           key: _navigatorKey,
           initialRoute: widget.setupPageRoute,
@@ -88,39 +108,85 @@ class _SetupFlowState extends State<SetupFlow> {
       ),
     );
   }
+
+  Route _onGenerateRoute(RouteSettings settings) {
+    late Widget page;
+    switch (settings.name) {
+      case routeCheckoutStartPage:
+        page = ShippingScreen(_onChekoutShipping, _isExitDesired);
+        break;
+      case routeCheckoutAddress:
+        page = const Center(
+          child: Text("Ya la pusiste"),
+        );
+        break;
+      // case routeDeviceSetupConnectingPage:
+      //   page = WaitingPage(
+      //     message: 'Connecting...',
+      //     onWaitComplete: _onConnectionEstablished,
+      //   );
+      //   break;
+      // case routeDeviceSetupFinishedPage:
+      //   page = FinishedPage(
+      //     onFinishPressed: _exitSetup,
+      //   );
+      //   break;
+    }
+
+    return MaterialPageRoute<dynamic>(
+      builder: (context) {
+        return page;
+      },
+      settings: settings,
+    );
+  }
 }
 
-Route _onGenerateRoute(RouteSettings settings) {
-  late Widget page;
-  switch (settings.name) {
-    case routeCheckoutStartPage:
-      page = WaitingPage(
-        message: 'Searching for nearby bulb...',
-        onWaitComplete: _onDiscoveryComplete,
-      );
-      break;
-    case routeDeviceSetupSelectDevicePage:
-      page = SelectDevicePage(
-        onDeviceSelected: _onDeviceSelected,
-      );
-      break;
-    case routeDeviceSetupConnectingPage:
-      page = WaitingPage(
-        message: 'Connecting...',
-        onWaitComplete: _onConnectionEstablished,
-      );
-      break;
-    case routeDeviceSetupFinishedPage:
-      page = FinishedPage(
-        onFinishPressed: _exitSetup,
-      );
-      break;
+class WaitingPage extends StatefulWidget {
+  const WaitingPage({
+    Key? key,
+    required this.message,
+    required this.onWaitComplete,
+  }) : super(key: key);
+
+  final String message;
+  final VoidCallback onWaitComplete;
+
+  @override
+  _WaitingPageState createState() => _WaitingPageState();
+}
+
+class _WaitingPageState extends State<WaitingPage> {
+  @override
+  void initState() {
+    super.initState();
+    _startWaiting();
   }
 
-  return MaterialPageRoute<dynamic>(
-    builder: (context) {
-      return page;
-    },
-    settings: settings,
-  );
+  Future<void> _startWaiting() async {
+    await Future<dynamic>.delayed(const Duration(seconds: 3));
+
+    if (mounted) {
+      widget.onWaitComplete();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 32),
+              Text(widget.message),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
