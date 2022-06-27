@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
 import 'package:e_commerce_app/providers/cart.dart';
+import 'package:e_commerce_app/providers/checkout_flow_provider.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
@@ -45,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       providers: [
         ChangeNotifierProvider(create: (_) => Network()),
         ChangeNotifierProvider(create: (_) => Cart()),
+        ChangeNotifierProvider(create: (_) => CheckoutFlowProvider())
       ],
       child: MaterialApp(
         theme: ThemeData(

@@ -1,6 +1,8 @@
+import 'package:e_commerce_app/providers/checkout_flow_provider.dart';
 import 'package:e_commerce_app/routes/checkout.dart';
 import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SetupFlow extends StatefulWidget {
   const SetupFlow({Key? key, required this.setupPageRoute}) : super(key: key);
@@ -30,16 +32,33 @@ class _SetupFlowState extends State<SetupFlow> {
     _navigatorKey.currentState!.pushNamed(routeCheckoutOrder);
   }
 
-  PreferredSizeWidget _buildFlowAppBar() {
+  PreferredSizeWidget _buildFlowAppBar(CheckoutFlow checkoutFlow) {
+    switch (checkoutFlow) {
+      case CheckoutFlow.shipping:
+        title = 'Shipping';
+        break;
+      case CheckoutFlow.address:
+        title = 'Delivery address';
+        break;
+      case CheckoutFlow.payment:
+        title = 'Payment';
+        break;
+      case CheckoutFlow.placeOrder:
+        title = 'Order';
+        break;
+    }
     return AppBar(
       title: Text(
         title,
         style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
       ),
       centerTitle: true,
-      leading: Icon(
-        Icons.arrow_back_ios,
-        color: Theme.of(context).colorScheme.onBackground,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
+        onPressed: _onExitPressed,
       ),
       elevation: 0,
       shadowColor: Colors.transparent,
@@ -67,7 +86,6 @@ class _SetupFlowState extends State<SetupFlow> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(true);
-                      _exitSetup();
                     },
                     child: const Text('Leave'),
                   ),
@@ -84,22 +102,24 @@ class _SetupFlowState extends State<SetupFlow> {
   }
 
   void _exitSetup() {
+    Provider.of<CheckoutFlowProvider>(context, listen: false)
+        .setCheckoutFlow(CheckoutFlow.shipping);
     Navigator.of(context).pop();
+  }
+
+  void changeAppBarTitle(String newTitle) {
+    title = newTitle;
   }
 
   final _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
-    void _changeAppBarTitle(String newTitle) {
-      setState(() {
-        title = newTitle;
-      });
-    }
-
+    var checkOutFlowProvider = Provider.of<CheckoutFlowProvider>(context);
     return WillPopScope(
       onWillPop: _isExitDesired,
       child: Scaffold(
+        appBar: _buildFlowAppBar(checkOutFlowProvider.getCheckoutFlow),
         body: Navigator(
           key: _navigatorKey,
           initialRoute: widget.setupPageRoute,
@@ -113,7 +133,7 @@ class _SetupFlowState extends State<SetupFlow> {
     late Widget page;
     switch (settings.name) {
       case routeCheckoutStartPage:
-        page = ShippingScreen(_onChekoutShipping, _isExitDesired);
+        page = ShippingScreen(_onChekoutShipping);
         break;
       case routeCheckoutAddress:
         page = const Center(
