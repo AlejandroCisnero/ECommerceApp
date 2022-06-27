@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/models/cart_item.dart';
 import 'package:e_commerce_app/routes/checkout.dart';
+import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:e_commerce_app/widgets/cart_item.dart' as wci;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,7 @@ class _CartScreenState extends State<CartScreen> {
                         minimumSize: MaterialStateProperty.all(
                             Size(screenSize.width - 20, 40))),
                     onPressed: () {
-                      Navigator.of(context).pushNamed(routeCheckoutStart);
+                      Navigator.of(context).pushNamed(ShippingScreen.route);
                     },
                     child: const Text(
                       'Buy',

@@ -133,24 +133,13 @@ class _SetupFlowState extends State<SetupFlow> {
     late Widget page;
     switch (settings.name) {
       case routeCheckoutStartPage:
-        page = ShippingScreen(_onChekoutShipping);
+        page = ShippingScreen();
         break;
       case routeCheckoutAddress:
         page = const Center(
           child: Text("Ya la pusiste"),
         );
         break;
-      // case routeDeviceSetupConnectingPage:
-      //   page = WaitingPage(
-      //     message: 'Connecting...',
-      //     onWaitComplete: _onConnectionEstablished,
-      //   );
-      //   break;
-      // case routeDeviceSetupFinishedPage:
-      //   page = FinishedPage(
-      //     onFinishPressed: _exitSetup,
-      //   );
-      //   break;
     }
 
     return MaterialPageRoute<dynamic>(

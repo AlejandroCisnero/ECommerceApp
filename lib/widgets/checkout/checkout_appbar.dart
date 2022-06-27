@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CheckoutAppbar extends StatelessWidget {
-  const CheckoutAppbar(this.title, {Key? key}) : super(key: key);
+class CheckoutAppbar extends StatelessWidget with PreferredSizeWidget {
+  CheckoutAppbar(this.title, {Key? key}) : super(key: key);
   final String title;
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -17,11 +16,17 @@ class CheckoutAppbar extends StatelessWidget {
           Icons.arrow_back_ios,
           color: Theme.of(context).colorScheme.onBackground,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
       ),
       elevation: 0,
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => const Size.fromHeight(70.0);
 }

@@ -4,6 +4,9 @@ import 'package:e_commerce_app/providers/cart.dart';
 import 'package:e_commerce_app/providers/checkout_flow_provider.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
+import 'package:e_commerce_app/screens/checkout/create_address_screen.dart';
+import 'package:e_commerce_app/screens/checkout/delivery_screen.dart';
+import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/screens/product_detail.dart';
 import 'package:e_commerce_app/widgets/setup_flow.dart';
@@ -64,28 +67,21 @@ class _MyHomePageState extends State<MyHomePage> {
               textStyle:
                   TextStyle(fontSize: 16, color: darkColorScheme.onBackground),
             ),
+            bodyLarge: GoogleFonts.mulish(
+              textStyle: TextStyle(
+                  fontSize: 20,
+                  color: darkColorScheme.onBackground,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
-        onGenerateRoute: (settings) {
-          late Widget page;
-          if (settings.name == routeHome) {
-            page = const Home();
-          } else if (settings.name!.startsWith(routePrefixCheckout)) {
-            final subRoute =
-                settings.name!.substring(routePrefixCheckout.length);
-            page = SetupFlow(setupPageRoute: subRoute);
-          } else {
-            throw Exception('Unknown route: ${settings.name}');
-          }
-          return MaterialPageRoute(
-              builder: (context) {
-                return page;
-              },
-              settings: settings);
-        },
+        home: const Home(),
         routes: {
           ProductDetail.route: (context) => const ProductDetail(),
           CartScreen.route: (context) => const CartScreen(),
+          ShippingScreen.route: (context) => const ShippingScreen(),
+          DeliveryAddress.route: (context) => const DeliveryAddress(),
+          CreateAddressScreen.route: (context) => const CreateAddressScreen(),
         },
       ),
     );
