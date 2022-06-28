@@ -26,12 +26,9 @@ class CustomDrawer extends StatelessWidget {
                   radius: 52,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
-                    radius: 50,
-                    child: Icon(
-                      Icons.person,
-                      size: 50,
-                    ),
-                  ),
+                      radius: 50,
+                      backgroundImage:
+                          AssetImage('assets/images/ProfilePic.jpg')),
                 ),
                 Text(
                   'Manuel Alejandro Davila',
@@ -54,12 +51,18 @@ class CustomDrawer extends StatelessWidget {
             width: width * 0.75,
             height: (heigh * 0.40) - kBottomNavigationBarHeight,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Icon(Icons.home),
+                    Container(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Icon(Icons.home,
+                          color: Theme.of(context).colorScheme.onSurface),
+                    ),
                     Text(
                       'Home',
                       style: Theme.of(context).textTheme.bodyMedium!.merge(
@@ -70,11 +73,16 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.home),
+                    Container(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Icon(Icons.credit_card,
+                          color: Theme.of(context).colorScheme.onSurface),
+                    ),
                     Text(
-                      'Home',
+                      'Purchased',
                       style: Theme.of(context).textTheme.bodyMedium!.merge(
                             TextStyle(
                                 color: Theme.of(context).colorScheme.onSurface),
@@ -83,11 +91,16 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.home),
+                    Container(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Icon(Icons.favorite,
+                          color: Theme.of(context).colorScheme.onSurface),
+                    ),
                     Text(
-                      'Home',
+                      'Favorites',
                       style: Theme.of(context).textTheme.bodyMedium!.merge(
                             TextStyle(
                                 color: Theme.of(context).colorScheme.onSurface),
@@ -96,21 +109,52 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.home),
+                    Container(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: Icon(Icons.settings,
+                          color: Theme.of(context).colorScheme.onSurface),
+                    ),
                     Text(
-                      'Home',
+                      'Settings',
                       style: Theme.of(context).textTheme.bodyMedium!.merge(
                             TextStyle(
                                 color: Theme.of(context).colorScheme.onSurface),
                           ),
                     )
                   ],
+                ),
+              ],
+            ),
+          ),
+          const Spacer(),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(
+              left: width * 0.05,
+              bottom: 25,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Icon(Icons.logout,
+                      color: Theme.of(context).colorScheme.onSurface),
+                ),
+                Text(
+                  'Logout',
+                  style: Theme.of(context).textTheme.bodyMedium!.merge(
+                        TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface),
+                      ),
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );
