@@ -20,4 +20,4 @@ I hope you like it as i liked developing it.
 -   You can add a product to your cart.
 
 ## Here is a preview of the App
-![alt text]([http://url/to/img.png](https://github.com/AlejandroCisnero/ECommerceApp/blob/main/LampApp%20Mockup.png))
+![alt text](LampApp_Mockup.png)
