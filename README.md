@@ -1,16 +1,23 @@
-# e_commerce_app
+# Lapm Shop Application
 
-A new Flutter project.
+## A beautiful Lamp Application made in Flutter.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Who is behind this app?
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Hi, I am a Flutter developer and this is just a litle demo of what can I do,
+I hope you like it as i liked developing it.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- I used MVVM architecture.
+- It implements UI/UX.
+- It is planned to add authorization and authentication with FireBase
+
+## What you can do in the App
+
+-   You can add, delete, sell and buy Lamps.
+-   You can mark a product as favorite.
+-   You can add a product to your cart.
+
+## Here is a preview of the App
+![alt text]([http://url/to/img.png](https://github.com/AlejandroCisnero/ECommerceApp/blob/main/LampApp%20Mockup.png))
