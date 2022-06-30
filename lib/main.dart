@@ -1,20 +1,19 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
+import 'package:e_commerce_app/providers/addresses.dart';
 import 'package:e_commerce_app/providers/cart.dart';
 import 'package:e_commerce_app/providers/checkout_flow_provider.dart';
+import 'package:e_commerce_app/providers/credit_cards.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/checkout/create_address_screen.dart';
-import 'package:e_commerce_app/screens/checkout/delivery_screen.dart';
+import 'package:e_commerce_app/screens/checkout/payment_screen.dart';
 import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/screens/product_detail.dart';
-import 'package:e_commerce_app/widgets/setup_flow.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
-import './routes/checkout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,9 +25,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -49,9 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
       providers: [
         ChangeNotifierProvider(create: (_) => Network()),
         ChangeNotifierProvider(create: (_) => Cart()),
-        ChangeNotifierProvider(create: (_) => CheckoutFlowProvider())
+        ChangeNotifierProvider(create: (_) => CheckoutFlowProvider()),
+        ChangeNotifierProvider(create: (_) => Addresses()),
+        ChangeNotifierProvider(create: (_) => CreditCards())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: darkColorScheme,
           textTheme: TextTheme(
@@ -80,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ProductDetail.route: (context) => const ProductDetail(),
           CartScreen.route: (context) => const CartScreen(),
           ShippingScreen.route: (context) => const ShippingScreen(),
-          DeliveryAddress.route: (context) => const DeliveryAddress(),
+          PaymentScreen.route: (context) => const PaymentScreen(),
           CreateAddressScreen.route: (context) => const CreateAddressScreen(),
         },
       ),

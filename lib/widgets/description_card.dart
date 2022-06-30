@@ -29,28 +29,34 @@ class DescriptionCard extends StatelessWidget {
               'assets/icons/ruler-vertical.svg',
               width: 16,
               height: 16,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           if (description == descriptionType.width)
             SvgPicture.asset(
               'assets/icons/ruler-horizontal.svg',
               width: 16,
               height: 16,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           if (description == descriptionType.diagonal)
             SvgPicture.asset(
               'assets/icons/ruler-solid.svg',
               width: 16,
               height: 16,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           if (description == descriptionType.potency)
             SvgPicture.asset(
               'assets/icons/bolt-solid.svg',
               width: 16,
               height: 16,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           Text(
             '$productFeature ${description == descriptionType.potency ? 'W' : 'cm'}',
-            style: const TextStyle(color: Colors.black),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
           )
         ],
       ),

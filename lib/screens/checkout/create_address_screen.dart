@@ -1,6 +1,10 @@
+import 'package:e_commerce_app/providers/addresses.dart';
 import 'package:e_commerce_app/widgets/checkout/checkout_appbar.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/address.dart';
 
 class CreateAddressScreen extends StatefulWidget {
   const CreateAddressScreen({Key? key}) : super(key: key);
@@ -19,6 +23,9 @@ class _CreateAddressScreenState extends State<CreateAddressScreen> {
   TextEditingController cityController = TextEditingController();
   TextEditingController zipCodeController = TextEditingController();
   String selectedCountry = 'Select a Country';
+
+  void saveAddress(String name, String address, String country, String state,
+      String city, String zipCode) {}
 
   @override
   Widget build(BuildContext context) {
@@ -208,6 +215,17 @@ class _CreateAddressScreenState extends State<CreateAddressScreen> {
                         ),
                       ),
                     );
+                    Address createdAddress = Address(
+                        id: DateTime.now().toIso8601String(),
+                        name: nameController.text,
+                        address: addressController.text,
+                        zipCode: zipCodeController.text,
+                        state: stateController.text,
+                        city: cityController.text,
+                        country: countryController.text);
+                    Provider.of<Addresses>(context, listen: false)
+                        .addAddress(createdAddress);
+                    Navigator.of(context).pop();
                   }
                 },
                 child: Container(

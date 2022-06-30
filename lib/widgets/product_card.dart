@@ -7,14 +7,7 @@ import 'package:transparent_image/transparent_image.dart';
 import '../models/product.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard(this.product,
-      // this.productName, this.productPrice, this.productImageUrl, this.productId,
-      {Key? key})
-      : super(key: key);
-  // final String productImageUrl;
-  // final String productName;
-  // final int productPrice;
-  // final String productId;
+  const ProductCard(this.product, {Key? key}) : super(key: key);
   final Product product;
   @override
   Widget build(BuildContext context) {

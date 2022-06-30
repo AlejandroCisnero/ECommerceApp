@@ -5,6 +5,7 @@ import 'package:e_commerce_app/widgets/cart_item.dart' as wci;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/addresses.dart';
 import '../providers/cart.dart';
 
 class CartScreen extends StatefulWidget {
@@ -24,22 +25,11 @@ class _CartScreenState extends State<CartScreen> {
     Provider.of<Cart>(context, listen: false).computeTotal();
   }
 
-  // void computeTotal(List<CartItem> items) {
-  //   double _total = 0.00;
-  //   for (var element in items) {
-  //     _total += element.quantity * element.product.productPrice;
-  //   }
-  //   setState(() {
-  //     total = _total;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     List<CartItem> cartItems = Provider.of<Cart>(context).cartItems;
     double total = Provider.of<Cart>(context).total;
-
     return Scaffold(
       body: SizedBox(
         width: screenSize.width,
