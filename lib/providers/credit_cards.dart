@@ -9,5 +9,14 @@ class CreditCards with ChangeNotifier {
         '08/22', '338', 'Planilla')
   ];
 
+  String _selectedCard = '';
+
+  get selectedCard => _selectedCard;
+
+  void changeSelectedCard(String value) {
+    _selectedCard = value;
+    notifyListeners();
+  }
+
   get creditCards => [..._creditCards];
 }
