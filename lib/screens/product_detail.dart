@@ -87,6 +87,7 @@ class ProductDetail extends StatelessWidget {
                 Positioned.fill(
                   top: (height / 2) - (height * 0.18),
                   child: ClipPath(
+                    //comment
                     child: Container(
                       padding: const EdgeInsets.only(top: 100),
                       width: width,
@@ -191,32 +192,16 @@ class ProductDetail extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    Provider.of<Cart>(context, listen: false)
-                                        .addItem(CartItem(
-                                            DateTime.now().toString(),
-                                            product,
-                                            1));
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                         dismissDirection:
                                             DismissDirection.startToEnd,
-                                        action: SnackBarAction(
-                                            textColor: Colors.white,
-                                            label: 'Go to cart',
-                                            onPressed: () {
-                                              Navigator.pushNamed(
-                                                  context, CartScreen.route);
-                                            }),
-                                        padding: const EdgeInsets.all(0),
-                                        content: Container(
+                                        padding: EdgeInsets.all(0),
+                                        content: SizedBox(
                                           height: 50,
-                                          decoration: BoxDecoration(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .secondary),
-                                          child: const Center(
+                                          child: Center(
                                             child: Text(
-                                              'Product Added!',
+                                              'Tu madre hpta',
                                               textAlign: TextAlign.center,
                                             ),
                                           ),
