@@ -7,7 +7,7 @@ import 'package:e_commerce_app/providers/credit_cards.dart';
 import 'package:e_commerce_app/providers/network.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/checkout/create_address_screen.dart';
-import 'package:e_commerce_app/screens/checkout/create_credit_card.dart';
+import 'package:e_commerce_app/screens/checkout/create_credit_card_screen.dart';
 import 'package:e_commerce_app/screens/checkout/payment_screen.dart';
 import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
 import 'package:e_commerce_app/screens/home.dart';
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ShippingScreen.route: (context) => const ShippingScreen(),
           PaymentScreen.route: (context) => const PaymentScreen(),
           CreateAddressScreen.route: (context) => const CreateAddressScreen(),
-          CreateCreditCard.route: (context) => const CreateCreditCard()
+          CreateCreditCardScreen.route: (context) => CreateCreditCardScreen()
         },
       ),
     );

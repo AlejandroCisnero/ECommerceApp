@@ -2,11 +2,12 @@ import 'dart:ffi';
 
 import 'package:e_commerce_app/models/credit_card.dart';
 import 'package:e_commerce_app/providers/credit_cards.dart';
-import 'package:e_commerce_app/screens/checkout/create_credit_card.dart';
 import 'package:e_commerce_app/widgets/checkout/checkout_appbar.dart';
 import 'package:e_commerce_app/widgets/checkout/credit_card_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'create_credit_card_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         margin: const EdgeInsets.only(bottom: 50),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).pushNamed(CreateCreditCard.route);
+            Navigator.of(context).pushNamed(CreateCreditCardScreen.route);
           },
           child: const Icon(Icons.add),
         ),

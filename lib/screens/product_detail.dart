@@ -192,16 +192,32 @@ class ProductDetail extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
+                                    Provider.of<Cart>(context, listen: false)
+                                        .addItem(CartItem(
+                                            DateTime.now().toString(),
+                                            product,
+                                            1));
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
+                                      SnackBar(
                                         dismissDirection:
                                             DismissDirection.startToEnd,
-                                        padding: EdgeInsets.all(0),
-                                        content: SizedBox(
+                                        action: SnackBarAction(
+                                            textColor: Colors.white,
+                                            label: 'Go to cart',
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                  context, CartScreen.route);
+                                            }),
+                                        padding: const EdgeInsets.all(0),
+                                        content: Container(
                                           height: 50,
-                                          child: Center(
+                                          decoration: BoxDecoration(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary),
+                                          child: const Center(
                                             child: Text(
-                                              'Tu madre hpta',
+                                              'Product Added!',
                                               textAlign: TextAlign.center,
                                             ),
                                           ),
