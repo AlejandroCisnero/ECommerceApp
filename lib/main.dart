@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/libraries/lib_color_schemes.g.dart';
 import 'package:e_commerce_app/providers/addresses.dart';
 import 'package:e_commerce_app/providers/cart.dart';
