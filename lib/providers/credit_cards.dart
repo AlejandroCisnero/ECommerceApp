@@ -8,7 +8,8 @@ class CreditCards with ChangeNotifier {
     CreditCard('Manuel Alejandro Davila Cisnero', '4896-5698-7845-2135',
         '08/22', '338', 'Universitaria'),
     CreditCard('Manuel Alejandro Davila Cisnero', '4896-5698-7845-2135',
-        '08/22', '338', 'Planilla')
+        '08/22', '338', 'Planilla',
+        icon: CreditsCard.black)
   ];
 
   String _selectedCard = '';
@@ -21,4 +22,12 @@ class CreditCards with ChangeNotifier {
   }
 
   get creditCards => [..._creditCards];
+
+  void addCreditCard(String holder, String number, String expirationDate,
+      String cvc, String alias, Enum icon) {
+    CreditCard creditCard =
+        CreditCard(holder, number, expirationDate, cvc, alias, icon: icon);
+    _creditCards.add(creditCard);
+    notifyListeners();
+  }
 }

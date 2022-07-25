@@ -2,9 +2,11 @@ import 'package:e_commerce_app/providers/credit_cards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore: must_be_immutable
 class CreditCardColorSelector extends StatefulWidget {
-  const CreditCardColorSelector({Key? key}) : super(key: key);
-
+  CreditCardColorSelector(this.changeCreditCardIcon, {Key? key})
+      : super(key: key);
+  void Function(Enum) changeCreditCardIcon;
   @override
   State<CreditCardColorSelector> createState() =>
       _CreditCardColorSelectorState();
@@ -17,6 +19,7 @@ class _CreditCardColorSelectorState extends State<CreditCardColorSelector> {
     setState(() {
       selectedCard = color;
     });
+    widget.changeCreditCardIcon(color);
   }
 
   @override

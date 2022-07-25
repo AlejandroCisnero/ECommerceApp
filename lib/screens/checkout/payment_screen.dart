@@ -57,6 +57,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         changeCreditCard,
                         creditCards[index].alias,
                         creditCards[index].number,
+                        creditCards[index].icon,
                         key: key,
                       );
                     }),
