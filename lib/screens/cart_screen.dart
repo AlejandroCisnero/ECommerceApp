@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/models/cart_item.dart';
 import 'package:e_commerce_app/routes/checkout.dart';
 import 'package:e_commerce_app/screens/checkout/shipping_screen.dart';
+import 'package:e_commerce_app/screens/home.dart';
 import 'package:e_commerce_app/widgets/cart_item.dart' as wci;
+import 'package:e_commerce_app/widgets/checkout/checkout_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,49 +33,81 @@ class _CartScreenState extends State<CartScreen> {
     List<CartItem> cartItems = Provider.of<Cart>(context).cartItems;
     double total = Provider.of<Cart>(context).total;
     return Scaffold(
-      body: SizedBox(
-        width: screenSize.width,
-        height: screenSize.height,
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                  itemCount: cartItems.length,
-                  itemBuilder: (ctx, index) {
-                    return wci.CartItem(cartItems[index].id,
-                        cartItems[index].product, cartItems[index].quantity);
-                  }),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Total'),
-                      Text('$total €'),
-                    ],
+      appBar: CheckoutAppbar('Cart'),
+      body: cartItems.isEmpty
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: const Center(
+                    child: Text('Your cart is empty'),
                   ),
-                  ElevatedButton(
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.only(bottom: 10, left: 20, right: 20),
+                  child: ElevatedButton(
                     style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(
                             Size(screenSize.width - 20, 40))),
                     onPressed: () {
-                      Navigator.of(context).pushNamed(ShippingScreen.route);
+                      Navigator.of(context).pushNamed('/');
                     },
                     child: const Text(
-                      'Buy',
+                      'Go to buy',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
+                )
+              ],
+            )
+          : SizedBox(
+              width: screenSize.width,
+              height: screenSize.height,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: cartItems.length,
+                        itemBuilder: (ctx, index) {
+                          return wci.CartItem(
+                              cartItems[index].id,
+                              cartItems[index].product,
+                              cartItems[index].quantity);
+                        }),
+                  ),
+                  Container(
+                    margin:
+                        const EdgeInsets.only(bottom: 10, left: 20, right: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Total'),
+                            Text('$total €'),
+                          ],
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              minimumSize: MaterialStateProperty.all(
+                                  Size(screenSize.width - 20, 40))),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(ShippingScreen.route);
+                          },
+                          child: const Text(
+                            'Buy',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

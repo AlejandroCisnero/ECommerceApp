@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:e_commerce_app/providers/network.dart';
+import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/no_internet.dart';
 import 'package:e_commerce_app/widgets/custom_app_bar.dart';
 import 'package:e_commerce_app/widgets/custom_drawer.dart';
@@ -15,6 +16,7 @@ import '../providers/products.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+  static const route = '/home';
 
   @override
   State<Home> createState() => _HomeState();

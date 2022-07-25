@@ -42,7 +42,7 @@ class CustomAppBar extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed(CartScreen.route);
+                    Navigator.of(context).push(_createRoute());
                   },
                   child: SvgPicture.asset(
                     'assets/icons/bag_icon.svg',
@@ -58,4 +58,26 @@ class CustomAppBar extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const CartScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 1.0);
+        const end = Offset.zero;
+
+        var curve = Curves.bounceInOut;
+        var curveTween = CurveTween(curve: curve);
+
+        final tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        final offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          child: child,
+          position: offsetAnimation,
+        );
+      });
 }
