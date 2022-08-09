@@ -4,6 +4,7 @@ import 'package:e_commerce_app/providers/cart.dart';
 import 'package:e_commerce_app/providers/checkout_flow_provider.dart';
 import 'package:e_commerce_app/providers/credit_cards.dart';
 import 'package:e_commerce_app/providers/network.dart';
+import 'package:e_commerce_app/providers/products.dart';
 import 'package:e_commerce_app/screens/cart_screen.dart';
 import 'package:e_commerce_app/screens/checkout/create_address_screen.dart';
 import 'package:e_commerce_app/screens/checkout/create_credit_card_screen.dart';
@@ -51,7 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: (_) => Cart()),
         ChangeNotifierProvider(create: (_) => CheckoutFlowProvider()),
         ChangeNotifierProvider(create: (_) => Addresses()),
-        ChangeNotifierProvider(create: (_) => CreditCards())
+        ChangeNotifierProvider(create: (_) => CreditCards()),
+        ChangeNotifierProvider(create: (_) => Products())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

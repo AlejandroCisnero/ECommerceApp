@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:e_commerce_app/providers/credit_cards.dart';
+import 'package:e_commerce_app/utils/credit_card_utils.dart';
 import 'package:e_commerce_app/widgets/checkout/checkout_appbar.dart';
 import 'package:e_commerce_app/widgets/creditCardColorSelector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -13,12 +15,26 @@ import 'package:provider/provider.dart';
 class CreateCreditCardScreen extends StatefulWidget {
   CreateCreditCardScreen({Key? key}) : super(key: key);
   static const route = '/CreateCreditCardScreen';
-
   @override
   State<CreateCreditCardScreen> createState() => _CreateCreditCardScreenState();
 }
 
 class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
+  late FocusNode myFocusNode;
+
+  @override
+  void initState() {
+    myFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed.
+    myFocusNode.dispose();
+    super.dispose();
+  }
+
   final _creditCardFormKey = GlobalKey<FormState>();
 
   //--------------------------------Input controllers-----------------------------------------------
@@ -37,7 +53,6 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
   );
   final expiryDateFormatter = MaskTextInputFormatter(
     mask: '##/##',
-    filter: {'#': RegExp(r'[0-9]')},
     type: MaskAutoCompletionType.lazy,
   ); //This formatter does not work yet, get back after you learn more aboy regular expressions.
   final cvcCodeFormatter = MaskTextInputFormatter(
@@ -46,7 +61,6 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
     type: MaskAutoCompletionType.lazy,
   );
   //-----------------------------------Functions-------------------------------------------------
-  //-------------------------------------------Functions--------------------------------------------
   void changeSelectedCreditCardIcon(Enum newIcon) {
     creditCardIcon = newIcon;
     log('Card icon changed');
@@ -151,7 +165,7 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
                                           'assets/icons/master_icon.svg',
                                           height: 48,
                                         ),
-                                      )
+                                      ),
                               ],
                             ),
                             Row(
@@ -164,6 +178,21 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
                                     width:
                                         MediaQuery.of(context).size.width / 2.5,
                                     child: TextFormField(
+                                      // onChanged: (text) {
+                                      //   if (text.length == 2) {
+                                      //     if (int.parse(text) < 0 ||
+                                      //         int.parse(text) > 12) {
+                                      //       expirationDateController.text =
+                                      //           '0${text.substring(1)}';
+                                      //       expirationDateController.selection =
+                                      //           TextSelection.fromPosition(
+                                      //               TextPosition(
+                                      //                   offset:
+                                      //                       expirationDateController
+                                      //                           .text.length));
+                                      //     }
+                                      //   }
+                                      // },
                                       onEditingComplete: () =>
                                           _creditCardFormKey.currentState!
                                               .validate(),
@@ -173,11 +202,15 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
                                         }
                                         return null;
                                       },
+                                      focusNode: myFocusNode,
                                       controller: expirationDateController,
                                       keyboardType: TextInputType.number,
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(fontSize: 20),
-                                      inputFormatters: [expiryDateFormatter],
+                                      inputFormatters: [
+                                        CardMonthInputFormatter()
+                                        //expiryDateFormatter,
+                                      ],
                                       decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 10, horizontal: 10),

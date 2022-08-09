@@ -11,21 +11,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
+import '../providers/products.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({Key? key}) : super(key: key);
-
   static const route = '/productDetail';
 
   @override
   Widget build(BuildContext context) {
-    final Product product =
-        ModalRoute.of(context)?.settings.arguments as Product;
+    final String productId =
+        ModalRoute.of(context)?.settings.arguments as String;
+    Product product = Provider.of<Products>(context)
+        .products
+        .firstWhere((element) => element.productId == productId);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return ChangeNotifierProvider(
-      create: (context) => product,
-      child: SafeArea(
+    return SafeArea(
+      child: ChangeNotifierProvider(
+        create: (context) => product,
         child: Scaffold(
           body: SizedBox(
             width: width,

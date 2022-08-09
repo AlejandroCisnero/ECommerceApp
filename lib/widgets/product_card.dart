@@ -14,55 +14,58 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(ProductDetail.route, arguments: product);
+            .pushNamed(ProductDetail.route, arguments: product.productId);
       },
-      child: Container(
-        margin: const EdgeInsets.only(left: 15),
-        child: Hero(
-          tag: product.productId,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 220,
-                height: 300,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(45)),
-                  child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: product.productIamgeUrl,
-                      fit: BoxFit.cover),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                product.productName,
-                style: GoogleFonts.mulish(
-                  textStyle: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      color: Theme.of(context).colorScheme.onBackground),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: Text(
-                  '€${product.productPrice}',
-                  style: GoogleFonts.mulish(
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 22,
-                        color: Theme.of(context).colorScheme.primary),
+      child: ChangeNotifierProvider(
+        create: (context) => product,
+        child: Container(
+          margin: const EdgeInsets.only(left: 15),
+          child: Hero(
+            tag: product.productId,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 220,
+                  height: 300,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(45)),
+                    child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: product.productIamgeUrl,
+                        fit: BoxFit.cover),
                   ),
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  product.productName,
+                  style: GoogleFonts.mulish(
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: Theme.of(context).colorScheme.onBackground),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: Text(
+                    '€${product.productPrice}',
+                    style: GoogleFonts.mulish(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 22,
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
