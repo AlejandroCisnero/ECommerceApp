@@ -178,21 +178,6 @@ class _CreateCreditCardScreenState extends State<CreateCreditCardScreen> {
                                     width:
                                         MediaQuery.of(context).size.width / 2.5,
                                     child: TextFormField(
-                                      // onChanged: (text) {
-                                      //   if (text.length == 2) {
-                                      //     if (int.parse(text) < 0 ||
-                                      //         int.parse(text) > 12) {
-                                      //       expirationDateController.text =
-                                      //           '0${text.substring(1)}';
-                                      //       expirationDateController.selection =
-                                      //           TextSelection.fromPosition(
-                                      //               TextPosition(
-                                      //                   offset:
-                                      //                       expirationDateController
-                                      //                           .text.length));
-                                      //     }
-                                      //   }
-                                      // },
                                       onEditingComplete: () =>
                                           _creditCardFormKey.currentState!
                                               .validate(),

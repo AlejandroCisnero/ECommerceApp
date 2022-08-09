@@ -102,7 +102,17 @@ class _HomeState extends State<Home> {
                                   scrollDirection: Axis.horizontal,
                                   itemCount: products.length,
                                   itemBuilder: (context, index) {
-                                    return ProductCard(products[index]);
+                                    return ChangeNotifierProvider(
+                                        create: (context) => Product(
+                                            products[index].productName,
+                                            products[index].productPrice,
+                                            products[index].productIamgeUrl,
+                                            products[index].productId,
+                                            products[index].features,
+                                            products[index].designer,
+                                            products[index].materials,
+                                            products[index].isFavorite),
+                                        child: const ProductCard());
                                   }),
                             ),
                             const SizedBox(

@@ -17,10 +17,8 @@ class NoInternet extends StatelessWidget {
           child: Container(
             color: Theme.of(context).colorScheme.primary,
           ),
-        ), //This doesnt work
-        Positioned(
-          top: height / 2,
-          left: width > 360 ? width / 3 : width / 5,
+        ),
+        Center(
           child: Text(
             'No internet connection',
             style: GoogleFonts.mulish(

@@ -11,7 +11,15 @@ class Cart with ChangeNotifier {
   List<CartItem> get cartItems => [..._cartItems];
 
   void addItem(CartItem item) {
-    _cartItems.add(item);
+    //Check whether the item is already in the cart list
+    if (_cartItems.any(
+        (element) => element.product.productId == item.product.productId)) {
+      int itemIndex = _cartItems.indexWhere(
+          (element) => element.product.productId == item.product.productId);
+      _cartItems[itemIndex].quantity++;
+    } else {
+      _cartItems.add(item);
+    }
     notifyListeners();
   }
 

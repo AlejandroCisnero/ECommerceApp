@@ -71,4 +71,11 @@ class Products with ChangeNotifier {
   ];
 
   List<Product> get products => [..._products];
+
+  void toggleFavorite(String productId) {
+    Product product =
+        _products.firstWhere((element) => element.productId == productId);
+    product.isFavorite = !product.isFavorite;
+    notifyListeners();
+  }
 }
