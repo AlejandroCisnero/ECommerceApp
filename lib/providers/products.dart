@@ -4,7 +4,7 @@ import '../models/feature.dart';
 import '../models/product.dart';
 
 class Products with ChangeNotifier {
-  List<Product> _products = [
+  final List<Product> _products = [
     Product(
         'Triple lamp',
         300,
@@ -62,7 +62,7 @@ class Products with ChangeNotifier {
     Product(
         'Lava Lamp',
         80,
-        'https://www.menkind.co.uk/media/catalog/product/cache/84a9762dea65cd4d66747ad9a34bdb64/g/r/graffiti_lava_lamp_60701_3_.jpg',
+        'https://cdn.shopify.com/s/files/1/0605/1473/0207/products/volcano-diamond-motion-lava-lamp-v210-2603712-koala-lamps-and-lighting-674095_768x768.jpg',
         'p7',
         Features(15, 45, 50, 15),
         'Manuel Alejandro Davila',
